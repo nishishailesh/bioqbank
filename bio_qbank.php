@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 echo '<html><head><script type="text/javascript" >
 		function showhide(one) {
@@ -13,7 +13,7 @@ echo '<html><head><script type="text/javascript" >
 			}	
 		}
 		</script></head><body>';
-
+echo 	'<link rel="stylesheet" type="text/css" href="my_styles.css">';
 
 /////////////////////////////////
 function login_varify()
@@ -57,13 +57,79 @@ function find_questions($link,$sql)
 
 }
 
-function show_question($q_array)
+function mk_select_from_table($link,$field,$disabled,$default)
 {
-	echo '<button id=+ onclick="showhide(\''.$q_array['id'].'\')">+</button><div id=question><textarea>'.$q_array['question'].'</textarea></div><div id=meta>'.$q_array['subject1'].'</div>';
-	echo '<div style="display:block;" id=answer_\''.$q_array['id'].'\'><textarea>'.$q_array['answer'].'</textarea></div>';
+	$sql='select `'.$field.'` from '.$field;
+	if(!$result=mysql_query($sql,$link)){return FALSE;}
+	
+		echo '<select  '.$disabled.' name='.$field.'>';
+		while($result_array=mysql_fetch_assoc($result))
+		{
+		if($result_array[$field]==$default)
+		{
+			echo '<option selected  > '.$result_array[$field].' </option>';
+		}
+		else
+			{
+				echo '<option  > '.$result_array[$field].' </option>';
+			}
+		}
+		echo '</select>';	
+		return TRUE;
+}
+
+function search_form($link)
+{
+	$sql='desc qbank';
+	if(!$result=mysql_query($sql,$link)){echo mysql_error();}
+	$tr=1;
+	echo '<table class=help><form method=post>';
+	echo '	<tr>
+				<td colspan=8><input type=submit name=submit value=search></td>';
+
+	while($ar=mysql_fetch_assoc($result))
+	{
+		echo '<tr>';
+		if($ar['Field']=='id')
+		{
+			echo '<td><input type=checkbox name=\'chk_from_'.$ar['Field'].'\' ></td><td>from_'.$ar['Field'].'</td>';
+			echo '<td><input type=text name=\'from_'.$ar['Field'].'\' ></td></tr><tr>';
+			echo '<td><input type=checkbox name=\'chk_to_'.$ar['Field'].'\' ></td><td>to_'.$ar['Field'].'</td>';
+			echo '<td><input type=text name=\'to_'.$ar['Field'].'\' >';
+			$tr++;
+		}
+		
+		else
+		{		
+			echo '<td><input type=checkbox name=\'chk_'.$ar['Field'].'\' ></td><td>'.$ar['Field'].'</td><td>';
+			if(!mk_select_from_table($link,$ar['Field'],'',''))
+			{
+				  echo '<input type=text name=\''.$ar['Field'].'\' >';
+			}
+		}
+		echo '</td>';
+		echo '</tr>';
+	}
+	echo '</form></table>';
 }
 
 
+
+
+
+function get_search_condition($post)
+{
+	
+	
+	
+	
+}
+
+function show_question($q_array)
+{
+	echo '<table class=style2><tr><td><div id=question><textarea cols=40>'.$q_array['question'].'</textarea></div></td></tr>';
+	echo '<tr><td><button id=+ onclick="showhide(\'answer_'.$q_array['id'].'\')">Ans</button><div style="display:none;" id=\'answer_'.$q_array['id'].'\'><textarea  cols=40 style="color:blue;">'.$q_array['answer'].'</textarea></div></td></tr></table>';
+}
 
 
 if(!isset($_SESSION['login']))
@@ -78,6 +144,7 @@ if(!isset($_SESSION['password']))
 }
 
 $link=connect();
+search_form($link);
 
 find_questions($link,"select * from qbank");
 
