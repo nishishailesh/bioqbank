@@ -1,0 +1,17 @@
+<style>
+
+/* These styles create the dropdown menus. */
+#navbar {
+	margin: 0;
+	padding: 0;
+	height: 1em; }
+
+	
+#navbar li {
+	list-style: none;
+	float: left; }
+	
+#navbar li li a:hover {
+	background-color: #8db3ff; }
+</style>
+

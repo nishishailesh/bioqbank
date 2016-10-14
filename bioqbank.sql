@@ -31,7 +31,7 @@ CREATE TABLE `qbank` (
   `question` varchar(3000) NOT NULL,
   `answer` varchar(3000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,8 +40,31 @@ CREATE TABLE `qbank` (
 
 LOCK TABLES `qbank` WRITE;
 /*!40000 ALTER TABLE `qbank` DISABLE KEYS */;
-INSERT INTO `qbank` VALUES (1,'justify','carbohydrate','glycolysis','biomedical importance','Blood container used for measurement of serum glucose contain fluoride ','See Glycolysis inhibitors');
+INSERT INTO `qbank` VALUES (1,'justify','carbohydrate','glycolysis','biomedical importance','Blood container used for measurement of serum glucose contain fluoride ','See Glycolysis inhibitors'),(2,'Short Note','Carbohydrate','Chemistry','Polysaccharide','Glycosaminoglycans','Describe bacis of structure and function correlation of various glycosaminoglycans');
 /*!40000 ALTER TABLE `qbank` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subject1`
+--
+
+DROP TABLE IF EXISTS `subject1`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `subject1` (
+  `subject1` varchar(100) NOT NULL,
+  PRIMARY KEY (`subject1`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subject1`
+--
+
+LOCK TABLES `subject1` WRITE;
+/*!40000 ALTER TABLE `subject1` DISABLE KEYS */;
+INSERT INTO `subject1` VALUES ('Carbohydrate'),('Lipid'),('Nucleic Acid'),('Protein');
+/*!40000 ALTER TABLE `subject1` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-26 21:19:59
+-- Dump completed on 2016-09-27  9:27:09
