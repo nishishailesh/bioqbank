@@ -1,26 +1,15 @@
 <?php
 
 
-echo '<html><head>
+echo '
 
-<link rel="stylesheet" type="text/css" href="my_styles.css">
+<style>
+	table {border:0px;border-spacing: 0;border-collapse: collapse;background-color:lightgray;}
+</style>
+
 <script type="text/javascript" >
-		function showhide(one) {
-
-			x=document.getElementById(one);
-			
-			if(x.style.display == "block")
-			{
-				x.style.display = "none";
-			}
-			else
-			{
-				x.style.display = "block";
-			}
-				
-			
-			
-			
+		function showhidemenu(one) 
+		{		
 			xx=document.getElementsByClassName(\'menu\');			
 			for(var i = 0; i < xx.length; i++)
 			{
@@ -29,7 +18,7 @@ echo '<html><head>
 					xx[i].style.display = "none";		
 				}
 				
-				elseif(xx[i]==document.getElementById(one))
+				else if(xx[i]==document.getElementById(one))
 				{
 					if(xx[i].style.display == "block")
 					{
@@ -40,12 +29,10 @@ echo '<html><head>
 						xx[i].style.display = "block";
 					}		
 				}
-			}
-			
-			
+			}	
 		}
 		
-		function hide() {
+		function hidemenu() {
 		
 			xx=document.getElementsByClassName(\'menu\');
 			for(var i = 0; i < xx.length; i++)
@@ -54,35 +41,37 @@ echo '<html><head>
 			}
 		}
 		
-		</script></head><body>';
-		
+		</script>';
+
+function menu()
+{		
 echo '
-<table class="style2">
-<tr><td style="width: 100px;">
-		<button onclick="showhide(\'button1\')">button1</button>
-		<table  id="button1" class="menu style1" style="position:absolute; display:none;"><tr><td>
-			<button onclick="hide()" >button11</button></td></tr><tr><td>
-			<button onclick="hide()" >button12</button></td></tr><tr><td>
-			<button onclick="hide()" >button13</button></td></tr>
+<form method=post>
+<table>
+<tr><td>
+		<button type=button onclick="showhidemenu(\'button1\')">Question</button>
+		<table  id="button1" class="menu" style="position:absolute; display:none;"><tr><td>
+			<button type=submit onclick="hidemenu()" name=new>New</button></td></tr><tr><td>
+			<button type=button onclick="hidemenu()" name=edit>Edit</button></td></tr><tr><td>
+			<button type=button onclick="hidemenu()" name=delete>Delete</button></td></tr><td>
+			<button formaction=search.php type=submit onclick="hidemenu()">Search</button></td></tr>
 		</table>
 		
-</td><td  style="width: 100px;">
-		<button onclick="showhide(\'button2\')">button2</button>
-		<table  id="button2" class="menu style1" style="position: absolute;display:none;"><tr><td>
-			<button onclick="hide()"  >button11</button></td></tr><tr><td>
-			<button onclick="hide()"  >button12</button></td></tr><tr><td>
-			<button onclick="hide()"  >button13</button></td></tr>
+</td><td>
+		<button  type=button onclick="showhidemenu(\'button2\')">Help</button>
+		<table  id="button2" class="menu" style="position: absolute;display:none;"><tr><td>
+			<button  type=button onclick="hidemenu()"  >Student</button></td></tr><tr><td>
+			<button  formaction=teacher_help.php type=submit onclick="hidemenu()">Teacher</button></td></tr><tr><td>
+			<button  formaction=logout.php type=submit onclick="hidemenu()">Logout</button></td></tr>
 		</table>
 			
 </td></tr>
 </table>
+</form>
 ';
 
-/*
-		
+}
 
-*/
-
-echo '<div><p>sdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeeesdfasdfasdffdsfwerwerwerewrewr ewrwerwerwer ewrwerwekrwerewjrrnnnnnnnnfffffffffffffweeeeeeeeee       rrrrrrrrrrrrrrrrrrrrrrrrrjhjkfjak</p></div>';
+//menu();
 
 ?>

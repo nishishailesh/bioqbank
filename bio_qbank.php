@@ -12,8 +12,14 @@ echo '<html><head><script type="text/javascript" >
 				document.getElementById(one).style.display = "block";
 			}	
 		}
-		</script></head><body>';
+		</script></head>';
+		
 echo 	'<link rel="stylesheet" type="text/css" href="my_styles.css">';
+
+include 'menu.php';
+		
+		
+echo '<body>';
 
 /////////////////////////////////
 function login_varify()
@@ -97,6 +103,7 @@ function mk_select_from_table($link,$field,$disabled,$default)
 		echo '</select>';	
 		return TRUE;
 }
+
 
 function mk_select_from_sql($link,$sql,$name,$disabled,$default)
 {
@@ -211,6 +218,7 @@ function new_form($link)
 			$tr++;
 		}
 		
+
 		elseif($ar['Field']=='qtype')
 		{		
 			echo '<td><input type=checkbox name=\'chk_'.$ar['Field'].'\' ></td><td>'.$ar['Field'].'</td><td>';
@@ -241,10 +249,12 @@ function new_form($link)
 			echo '<input type=text name=\''.$ar['Field'].'\' >';
 		}
 
+
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</form></table>';
+
 }
 
 
@@ -272,6 +282,7 @@ function get_search_condition($post)
 	{
 			return false;
 	}
+
 }
 
 
@@ -281,6 +292,8 @@ function show_question($q_array)
 	echo '<table class=style2><tr><td><div id=question><textarea cols=40>'.$q_array['question'].'</textarea></div></td></tr>';
 	echo '<tr><td><button id=+ onclick="showhide(\'answer_'.$q_array['id'].'\')">Ans</button><div style="display:none;" id=\'answer_'.$q_array['id'].'\'><textarea  cols=40 style="color:blue;">'.$q_array['answer'].'</textarea></div></td></tr></table>';
 }
+
+
 
 
 if(!isset($_SESSION['login']))
@@ -295,8 +308,7 @@ if(!isset($_SESSION['password']))
 }
 
 $link=connect();
-
-main_menu();
+menu();
 search_form($link);
 
 
