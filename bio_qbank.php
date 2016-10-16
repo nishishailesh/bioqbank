@@ -12,8 +12,14 @@ echo '<html><head><script type="text/javascript" >
 				document.getElementById(one).style.display = "block";
 			}	
 		}
-		</script></head><body>';
+		</script></head>';
+		
 echo 	'<link rel="stylesheet" type="text/css" href="my_styles.css">';
+
+include 'menu.php';
+		
+		
+echo '<body>';
 
 /////////////////////////////////
 function login_varify()
@@ -98,9 +104,7 @@ function mk_select_from_table($link,$field,$disabled,$default)
 		return TRUE;
 }
 
-<<<<<<< HEAD
-function search_form($link)
-=======
+
 function mk_select_from_sql($link,$sql,$name,$disabled,$default)
 {
 	if(!$result=mysql_query($sql,$link)){return FALSE;}
@@ -194,7 +198,6 @@ function search_form($link)
 }
 
 function new_form($link)
->>>>>>> b8d1038dc3457a1f1bac19eb142d28d69c880102
 {
 	$sql='desc qbank';
 	if(!$result=mysql_query($sql,$link)){echo mysql_error();}
@@ -215,16 +218,7 @@ function new_form($link)
 			$tr++;
 		}
 		
-<<<<<<< HEAD
-		else
-		{		
-			echo '<td><input type=checkbox name=\'chk_'.$ar['Field'].'\' ></td><td>'.$ar['Field'].'</td><td>';
-			if(!mk_select_from_table($link,$ar['Field'],'',''))
-			{
-				  echo '<input type=text name=\''.$ar['Field'].'\' >';
-			}
-		}
-=======
+
 		elseif($ar['Field']=='qtype')
 		{		
 			echo '<td><input type=checkbox name=\'chk_'.$ar['Field'].'\' ></td><td>'.$ar['Field'].'</td><td>';
@@ -255,13 +249,12 @@ function new_form($link)
 			echo '<input type=text name=\''.$ar['Field'].'\' >';
 		}
 
->>>>>>> b8d1038dc3457a1f1bac19eb142d28d69c880102
+
 		echo '</td>';
 		echo '</tr>';
 	}
 	echo '</form></table>';
-<<<<<<< HEAD
-=======
+
 }
 
 
@@ -289,7 +282,7 @@ function get_search_condition($post)
 	{
 			return false;
 	}
->>>>>>> b8d1038dc3457a1f1bac19eb142d28d69c880102
+
 }
 
 
@@ -301,20 +294,6 @@ function show_question($q_array)
 }
 
 
-
-function get_search_condition($post)
-{
-	
-	
-	
-	
-}
-
-function show_question($q_array)
-{
-	echo '<table class=style2><tr><td><div id=question><textarea cols=40>'.$q_array['question'].'</textarea></div></td></tr>';
-	echo '<tr><td><button id=+ onclick="showhide(\'answer_'.$q_array['id'].'\')">Ans</button><div style="display:none;" id=\'answer_'.$q_array['id'].'\'><textarea  cols=40 style="color:blue;">'.$q_array['answer'].'</textarea></div></td></tr></table>';
-}
 
 
 if(!isset($_SESSION['login']))
@@ -329,9 +308,7 @@ if(!isset($_SESSION['password']))
 }
 
 $link=connect();
-search_form($link);
-
-main_menu();
+menu();
 search_form($link);
 
 

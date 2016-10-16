@@ -5,9 +5,10 @@ echo '<html>';
 echo '<head>';
 echo '</head>';
 echo '<body>';
-
+unset($_SESSION['login']);
+unset($_SESSION['password']);
 echo '
-<form method=post action=bio_qbank.php>
+<form method=post action=start.php>
 <table>
 <tr>
 <td>Login Name</td>
