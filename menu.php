@@ -41,6 +41,7 @@ echo '
 			}
 		}
 		
+		//document.onclick=function(){hidemenu();};
 		</script>';
 
 function menu()
@@ -51,8 +52,8 @@ echo '
 <tr><td>
 		<button type=button onclick="showhidemenu(\'button1\')">Question</button>
 		<table  id="button1" class="menu" style="position:absolute; display:none;"><tr><td>
-			<button type=submit onclick="hidemenu()" name=new>New</button></td></tr><tr><td>
-			<button type=button onclick="hidemenu()" name=edit>Edit</button></td></tr><tr><td>
+			<button formaction=new.php type=submit onclick="hidemenu()" name=new>New</button></td></tr><tr><td>
+			<button formaction=edit.php type=submit onclick="hidemenu()" name=edit>Edit</button></td></tr><tr><td>
 			<button type=button onclick="hidemenu()" name=delete>Delete</button></td></tr><td>
 			<button formaction=search.php type=submit onclick="hidemenu()">Search</button></td></tr>
 		</table>

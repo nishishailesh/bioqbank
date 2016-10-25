@@ -127,6 +127,9 @@ function get_search_condition($post)
 
 }
 
+
+
+/*
 function show_question($q_array)
 {
 	echo '<table class=style2>
@@ -160,17 +163,9 @@ function show_question($q_array)
 		</table>';
 }
 
-function find_and_show_questions($link,$sql)
-{
+*/
 
-	if(!$result=mysql_query($sql,$link)){echo mysql_error();}
-	
-	while($array=mysql_fetch_assoc($result))
-	{
-		show_question($array);
-	}
 
-}
 
 
 
